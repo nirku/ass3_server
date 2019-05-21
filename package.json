@@ -1,0 +1,26 @@
+{
+  "name": "POI_PROJECT",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "angular-local-storage": "^0.7.1",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "fs": "^0.0.1-security",
+    "js-priority-queue": "^0.1.5",
+    "jsonwebtoken": "^8.2.1",
+    "local-storage": "^1.4.2",
+    "tedious": "^6.1.1",
+    "tedious-connection-pool": "^1.0.5",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
