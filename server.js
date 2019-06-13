@@ -19,5 +19,7 @@ app.listen(port, function () {
 // models
 var users=require('./Model/users');
 app.use('/users',users);
-//var POI = require('./Model/POI')
-//app.use('/POI',POI)
+var POI = require('./Model/POI')
+app.use('/POI',POI)
+var usersPOI = require('./Model/usersPOI')
+app.use('/usersPOI',usersPOI)
