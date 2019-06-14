@@ -7,11 +7,12 @@
     "angular-local-storage": "^0.7.1",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "js-priority-queue": "^0.1.5",
     "jsonwebtoken": "^8.2.1",
     "local-storage": "^1.4.2",
+    "moment": "^2.24.0",
     "tedious": "^6.1.1",
     "tedious-connection-pool": "^1.0.5",
     "xml2js": "^0.4.19"
