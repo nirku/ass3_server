@@ -32,7 +32,7 @@ router.get('/getAllPoints', function (req, res) {
 
 router.get('/getPopularPoints', function (req, res) {
     try {
-        var rank = req.body.minimalRank;
+        var rank = req.query.minimalRank;
 
         //check that all paramters was given
         if (!rank) {
