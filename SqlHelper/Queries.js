@@ -20,7 +20,7 @@ exports.getUserCategoryQuery = function(username){
 
 
 exports.getUserQuery = function(username){
-    return util.format("SELECT username, password FROM [dbo].[User] WHERE username='%s';",username);
+    return util.format("SELECT * FROM [dbo].[User] WHERE username='%s';",username);
 }
 
 exports.getUserAnswerQuery = function(username){
@@ -41,7 +41,7 @@ exports.getUserQuestionQuery = function(username){
 }
 
 exports.getAllQuestionQuery = function (){
-    return util.format("SELECT question FROM [dbo].[UserQuestion];");
+    return util.format("SELECT * FROM [dbo].[UserQuestion];");
 }
 
 exports.getAllCategoriesQuery = function (){

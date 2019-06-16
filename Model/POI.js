@@ -63,7 +63,7 @@ router.get('/getPopularPoints', function (req, res) {
 
 router.get('/getInfoPoint', function (req, res) {
     try {
-        var pointID = req.body.pointID;
+        var pointID = req.query.pointID;
 
         //check that all paramters was given
         if (!pointID) {

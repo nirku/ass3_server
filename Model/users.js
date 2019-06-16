@@ -52,7 +52,7 @@ router.post('/addUser', function (req, res) {
         }
 
         //check the country given
-        if (!checkCountry(country)) {
+        if (checkCountry()) {
             res.status(500).send('country is incorrect');
             return;
         }
@@ -90,6 +90,33 @@ router.post('/addUser', function (req, res) {
             })
     }
     catch{
+        res.status(500).send("Oops... There was an error");
+    }
+})
+
+router.get('/getUserInfo', function (req, res) {
+    try {
+        var username = req.query.username;
+        //check that user name paramter was given
+        if (!username) {
+            res.status(500).send('missing paramter');
+            return;
+        }
+
+        var query = queries.getUserQuery(username)
+        DButilsAzure.execQuery(query)
+            .then(function (result) {
+                var user = result[0];
+                res.json({
+                    success: true,
+                    message: 'User was granted',
+                    user: user
+                })
+            })
+            .catch(function (err) {
+                res.status(500).send('Error in finding user');
+            })
+    } catch{
         res.status(500).send("Oops... There was an error");
     }
 })
@@ -224,7 +251,7 @@ router.get('/getAllQuestions', function (req, res) {
             .then(function (result) {
                 var questions = [];
                 for (var i = 0; i < result.length; i++) {
-                    questions.push(result[i]['question'])
+                    questions.push(result[i])
                 }
                 res.json({
                     success: true,
@@ -301,16 +328,15 @@ function checkEmail(email) {
 
 function checkCountry(country) {
     try {
-        fs.readFile('countries.xml', function (err, data) {
-            parser.parseString(data, function (err, result) {
-                var counties = result.Countries.Country;
-                counties.forEach(elem => {
-                    if (elem.Name[0] == country){
-                        return true;
-                    }
-                });
-                return false;
-            })
+        var data = fs.readFileSync('countries.xml');
+        parser.parseString(data, function (err, result) {
+            var counties = result.Countries.Country;
+            counties.forEach(elem => {
+                if (elem.Name[0] == country) {
+                    return true;
+                }
+            });
+            return false;
         })
     }
     catch {
