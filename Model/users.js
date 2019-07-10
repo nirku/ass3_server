@@ -215,7 +215,7 @@ router.post('/passwordRetrival', function (req, res) {
 
 router.get('/getUserQuestion', function (req, res) {
     try {
-        var username = req.body.username;
+        var username = req.query.username;
 
         //check that all paramters was given
         if (!username) {

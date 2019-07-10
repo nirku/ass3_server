@@ -24,6 +24,15 @@ router.use('/', function (req, res, next) {
     }
 });
 
+router.get('/validation',function(req,res,next){
+    var username = req.decoded.payload.username;
+    res.json({
+        success: true,
+        message: 'token is valid',
+        username: username
+    });
+})
+
 router.post('/addSavedPoint', function (req, res) {
     try {
         var username = req.decoded.payload.username;
@@ -52,7 +61,7 @@ router.post('/addSavedPoint', function (req, res) {
 
 router.get('/getSavedPoints', function (req, res) {
     var username = req.decoded.payload.username;
-    var numOfPoints = req.body.numOfPoints;
+    var numOfPoints = req.query.numOfPoints;
     var query = queries.getSavedPointQuery(username, numOfPoints);
 
     //check that all paramters was given
@@ -132,7 +141,7 @@ router.patch('/saveFavoriteOrder', function (req, res) {
 router.get('/getPopularPoints', function (req, res) {
     try {
         var username = req.decoded.payload.username;
-        var numOfPoints = req.body.numOfPoints;
+        var numOfPoints = req.query.numOfPoints;
 
         //check that all paramters was given
         if (!username || !numOfPoints) {
